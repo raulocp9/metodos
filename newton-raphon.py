@@ -66,7 +66,7 @@ def menu():
         try: 
             opc = int(input())
         except ValueError:
-            print("Not a number. Try again")
+            print("Not a number. Try again\n")
         else:
             if 1 <= opc <= 5:
                 break
@@ -102,92 +102,93 @@ def values2():
 
 
 if __name__=="__main__":
-    opc = menu() 
-    if opc == 1:#newton-raphon method
-        iteration, error = menu2() # max number of iterations and max error given by user
-        x = values1()# initial point given by user
- 
-        for i in range(iteration):
-            xold = x
-            J_inv = np.linalg.inv(J_func1(x))
-            product = np.dot(J_inv, func1(x))
-            x = np.subtract(x,product)
-            err = np.linalg.norm(x -xold)
-            print(
-''' Iteration,\t x\t error
-    {}        {}       {:.6f}
-            
-            
-             '''.format(i, x, err) )
+    while True: 
+        opc = menu() 
+        if opc == 1:#newton-raphon method
+            iteration, error = menu2() # max number of iterations and max error given by user
+            x = values1()# initial point given by user
+    
+            for i in range(iteration):
+                xold = x
+                J_inv = np.linalg.inv(J_func1(x))
+                product = np.dot(J_inv, func1(x))
+                x = np.subtract(x,product)
+                err = np.linalg.norm(x -xold)
+                print(
+    ''' Iteration,\t x\t error
+        {}        {}       {:.6f}
+                
+                
+                '''.format(i, x, err) )
 
-            if err < error:
-                break
-        else:
-            print("max error could not be reached")
+                if err < error:
+                    break
+            else:
+                print("max error could not be reached")
 
-    elif opc == 2:
-        iteration, error = menu2()
-        x = values1()
+        elif opc == 2:
+            iteration, error = menu2()
+            x = values1()
 
-        for i in range(iteration):
-            xold = x
-            J_inv = np.linalg.inv(J_func2(x))
-            product = np.dot(J_inv, func2(x))
-            x = np.subtract(x,product)
-            err = np.linalg.norm(x -xold)
-            print(
-''' Iteration,\t x\t error
-    {}        {}       {:.6f}
-            
-            
-             '''.format(i, x, err) )
+            for i in range(iteration):
+                xold = x
+                J_inv = np.linalg.inv(J_func2(x))
+                product = np.dot(J_inv, func2(x))
+                x = np.subtract(x,product)
+                err = np.linalg.norm(x -xold)
+                print(
+    ''' Iteration,\t x\t error
+        {}        {}       {:.6f}
+                
+                
+                '''.format(i, x, err) )
 
-            if err < error:
-                break
-        else:
-            print("max error could not be reached")
-        
-    elif opc == 3:
-        iteration, error = menu2()
-        x = values2()# initial point given by user
- 
-        for i in range(iteration):
-            xold = x
-            J_inv = np.linalg.inv(J_func3(x))
-            product = np.dot(J_inv, func3(x))
-            x = np.subtract(x,product)
-            err = np.linalg.norm(x -xold)
-            print(
-''' Iteration,\t x\t error
-    {}        {}       {:.6f}
+                if err < error:
+                    break
+            else:
+                print("max error could not be reached")
             
-            
-             '''.format(i, x, err) )
-            if err < error:
-                break
-        else:
-            print("max error could not be reached")        
-    elif opc ==4:
-        iteration, error = menu2()
-        x = values2()# initial point given by user
- 
-        for i in range(iteration):
-            xold = x
-            J_inv = np.linalg.inv(J_func4(x))
-            product = np.dot(J_inv, func4(x))
-            x = np.subtract(x,product)
-            err = np.linalg.norm(x -xold)
-            print(
-''' Iteration,\t x\t error
-    {}        {}       {:.6f}
-            
-            
-             '''.format(i, x, err) )
-            if err < error:
-                break        
-        else:
-            print("max error could not be reached")
+        elif opc == 3:
+            iteration, error = menu2()
+            x = values2()# initial point given by user
+    
+            for i in range(iteration):
+                xold = x
+                J_inv = np.linalg.inv(J_func3(x))
+                product = np.dot(J_inv, func3(x))
+                x = np.subtract(x,product)
+                err = np.linalg.norm(x -xold)
+                print(
+    ''' Iteration,\t x\t error
+        {}        {}       {:.6f}
+                
+                
+                '''.format(i, x, err) )
+                if err < error:
+                    break
+            else:
+                print("max error could not be reached")        
+        elif opc ==4:
+            iteration, error = menu2()
+            x = values2()# initial point given by user
+    
+            for i in range(iteration):
+                xold = x
+                J_inv = np.linalg.inv(J_func4(x))
+                product = np.dot(J_inv, func4(x))
+                x = np.subtract(x,product)
+                err = np.linalg.norm(x -xold)
+                print(
+    ''' Iteration,\t x\t error
+        {}        {}       {:.6f}
+                
+                
+                '''.format(i, x, err) )
+                if err < error:
+                    break        
+            else:
+                print("max error could not be reached")
 
-    elif opc ==5:
-        quit()
+        elif opc ==5:
+            quit()
 
