@@ -102,6 +102,8 @@ def values2():
 
 
 if __name__=="__main__":
+    print("hola")
+
     while True: 
         opc = menu() 
         if opc == 1:#newton-raphon method
@@ -114,12 +116,11 @@ if __name__=="__main__":
                 product = np.dot(J_inv, func1(x))
                 x = np.subtract(x,product)
                 err = np.linalg.norm(x -xold)
-                print(
-    ''' Iteration,\t x\t error
-        {}        {}       {:.6f}
+                print(''' Iteration\t\tx\t\t\ty\t\t\terror
+    {}\t \t{}\t {}\t {:.10f}
                 
                 
-                '''.format(i, x, err) )
+                        '''.format(i, x[0][0],x[1][0], err) )
 
                 if err < error:
                     break
@@ -136,12 +137,11 @@ if __name__=="__main__":
                 product = np.dot(J_inv, func2(x))
                 x = np.subtract(x,product)
                 err = np.linalg.norm(x -xold)
-                print(
-    ''' Iteration,\t x\t error
-        {}        {}       {:.6f}
+                print(''' Iteration\t\tx\t\t\ty\t\t\terror
+    {}\t \t{}\t {}\t {:.10f}
                 
                 
-                '''.format(i, x, err) )
+                        '''.format(i, x[0][0],x[1][0], err) )
 
                 if err < error:
                     break
@@ -158,16 +158,17 @@ if __name__=="__main__":
                 product = np.dot(J_inv, func3(x))
                 x = np.subtract(x,product)
                 err = np.linalg.norm(x -xold)
-                print(
-    ''' Iteration,\t x\t error
-        {}        {}       {:.6f}
+                print(''' Iteration\t\tx\t\t\ty\t\t\terror
+    {}\t \t{}\t {}\t {:.10f}
                 
                 
-                '''.format(i, x, err) )
+                        '''.format(i, x[0][0],x[1][0], err) )
+
                 if err < error:
                     break
             else:
                 print("max error could not be reached")        
+
         elif opc ==4:
             iteration, error = menu2()
             x = values2()# initial point given by user
@@ -178,12 +179,12 @@ if __name__=="__main__":
                 product = np.dot(J_inv, func4(x))
                 x = np.subtract(x,product)
                 err = np.linalg.norm(x -xold)
-                print(
-    ''' Iteration,\t x\t error
-        {}        {}       {:.6f}
+                print(''' Iteration\t\tx\t\t\ty\t\t\terror
+    {}\t \t{}\t {}\t {:.10f}
                 
                 
-                '''.format(i, x, err) )
+                        '''.format(i, x[0][0],x[1][0], err) )
+
                 if err < error:
                     break        
             else:
