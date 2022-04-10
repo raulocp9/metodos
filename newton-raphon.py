@@ -158,10 +158,10 @@ if __name__=="__main__":
                 x = np.subtract(x,product)
                 err = np.linalg.norm(x -xold)
                 print(''' Iteration\t\tx\t\t\ty\t\t\terror
-    {}\t \t{}\t {}\t {:.10f}
+    {}\t \t{}\t {}\t {}\t{:.10f}
                 
                 
-                        '''.format(i, x[0][0],x[1][0], err) )
+                        '''.format(i, x[0][0], x[1][0], x[2][0], err) )
 
                 if err < error:
                     break
@@ -179,10 +179,10 @@ if __name__=="__main__":
                 x = np.subtract(x,product)
                 err = np.linalg.norm(x -xold)
                 print(''' Iteration\t\tx\t\t\ty\t\t\terror
-    {}\t \t{}\t {}\t {:.10f}
+    {}\t \t{}\t {}\t{}\t {:.10f}
                 
                 
-                        '''.format(i, x[0][0],x[1][0], err) )
+                        '''.format(i, x[0][0], x[1][0], x[2][0], err) )
 
                 if err < error:
                     break        
