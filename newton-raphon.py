@@ -157,7 +157,7 @@ if __name__=="__main__":
                 product = np.dot(J_inv, func3(x))
                 x = np.subtract(x,product)
                 err = np.linalg.norm(x -xold)
-                print(''' Iteration\t\tx\t\t\ty\t\t\terror
+                print(''' Iteration\t\tx\t\t\ty\t\t\tz\t\terror
     {}\t \t{}\t {}\t {}\t{:.10f}
                 
                 
@@ -178,7 +178,7 @@ if __name__=="__main__":
                 product = np.dot(J_inv, func4(x))
                 x = np.subtract(x,product)
                 err = np.linalg.norm(x -xold)
-                print(''' Iteration\t\tx\t\t\ty\t\t\terror
+                print(''' Iteration\t\tx\t\t\ty\t\t\tz\t\terror
     {}\t \t{}\t {}\t{}\t {:.10f}
                 
                 
