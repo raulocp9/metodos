@@ -1,5 +1,7 @@
+from re import ASCII
 import numpy as np
 import math 
+import sympy as smp
 
 def func1(x):
     f1 = x[0][0]**2 + x[0][0]*x[1][0] -10
@@ -44,24 +46,37 @@ def J_func4(x):
 
 def menu():
     while(True):
+            
         print('Program that calculates the root of the following systems of equations using Newton-Raphson method\n\n')
-        print('''\t\t\t Menu:
+        print('\t\t\t Menu:')
+        x, y, z =smp.symbols('x y z', real=True)
+        smp.init_printing()    
 
-        1. x^2 + xy -10 = 0
-           y + 3xy^2 -50 = 0
-        
-        2. x^2 + y^2 -9 = 0
-           -e^x -2y -3 = 0
-        
-        3. 2x^2 -4x + y^2 + 3z^2 + 6z +2 = 0
-           x + y^2 -2y + 2z -5 = 0
-           2x^2 -12x + y^2 -3z +8 = 0
-        
-        4. x^2 -4x +y^2 = 0
-           x^2 -x -12y +1 = 0
-           3x^2 -12x + y^2 -3z^2 +8 = 0
-        
-        5. Exit
+        f1 = 1.- x**2 + x*y- 10
+        g1 = y + 3*x*y**2 -50 
+        print('1.\n')
+        smp.pprint(f1)
+        smp.pprint(g1)
+        f2 = x**2 + y**2 -9
+        g2 = -smp.exp(1)**x -2*y -3
+        print('\n2.\n')
+        smp.pprint(f2)
+        smp.pprint(g2,use_unicode=True)
+        f3 = 2*x**2 -4*x + y**2 + 3*z**2 + 6*z +2
+        g3 = x + y**2 -2*y +2*z -5
+        t3 = 2*x**2 -12*x + y**2 -3*z + 8
+        print('\n3.\n')
+        smp.pprint(f3)
+        smp.pprint(g3)
+        smp.pprint(t3)
+        f4 = x**2 -4*x +y**2
+        g4 = x**2 -x -12*y +1
+        t4 = 3*x**2 -12*x +y**2 -3*z**2 +8
+        print('\n4.\n')
+        smp.pprint(f4)
+        smp.pprint(g4)
+        smp.pprint(t4)
+        print('''\n5. Exit
         Enter a option: ''')
         try: 
             opc = int(input())
@@ -75,29 +90,68 @@ def menu():
     return opc
 
 def menu2():
-    print("Enter the maximum number of iterations")
-    iteration = int(input())
-    print("Enter the maximum Ea(Absolute Error)")
-    error = float(input())
+    while True:
+        print("Enter the maximum number of iterations")
+        try:
+            iteration = int(input())
+        except ValueError:
+            print("Not a number. Try again\n")
+        else:
+            break
+    while True:
+        print("Enter the maximum Ea(Absolute Error)")
+        try:
+            error = float(input())
+        except ValueError:
+            print("Not a number. Try again\n")
+        else:
+            break
     return iteration, error
 
 def values1():
-
-    print("Enter the initial value of x")
-    x = float(input())
-    print("Enter the initial value of y")
-    y = float(input())
-    print("\n")
+    while True:
+        print("Enter the initial value of x")
+        try:
+            x = float(input())
+        except ValueError:
+            print("Not a number. Try again \n")
+        else: 
+            break
+    while True:
+        print("Enter the initial value of y")
+        try:
+            y = float(input())
+        except ValueError:
+            print('Not a number. Try again\n')
+        else:
+            break
     return np.array([[x],[y]])
 
 def values2():
-    print("Enter the initial value of x")
-    a  = float(input())
-    print("Enter the initial value of y")
-    b = float(input())
-    print("Enter the initial values of z")
-    c = float(input())
-    print("\n")
+    while True:
+        print("Enter the initial value of x")
+        try:
+            a  = float(input())
+        except ValueError:
+            print("Not a number. Try again\n")
+        else:
+            break
+    while True:
+        print("Enter the initial value of y")
+        try:
+            b = float(input())
+        except ValueError:
+            print("Not a number. Try again\n")
+        else:
+            break
+    while True:
+        print("Enter the initial values of z")
+        try:
+            c = float(input())
+        except ValueError:
+            print('Not a number. Try again\n')
+        else:
+            break
     return np.array([[a],[b],[c]])
 
 
@@ -105,9 +159,9 @@ if __name__=="__main__":
 
     while True: 
         opc = menu() 
-        if opc == 1:#newton-raphon method
-            iteration, error = menu2() # max number of iterations and max error given by user
-            x = values1()# initial point given by user
+        if opc == 1:
+            iteration, error = menu2()
+            x = values1()
     
             for i in range(iteration):
                 xold = x
