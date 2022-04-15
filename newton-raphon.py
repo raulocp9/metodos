@@ -2,6 +2,7 @@ from re import ASCII
 import numpy as np
 import math 
 import sympy as smp
+from tabulate import *
 
 def func1(x):
     f1 = x[0][0]**2 + x[0][0]*x[1][0] -10
@@ -155,93 +156,84 @@ def values2():
     return np.array([[a],[b],[c]])
 
 
-if __name__=="__main__":
-
+if __name__=="__main__":    
+    headers1 =["i", "x", "y", "Ea"]
+    headers2 =["i", "x", "y", "z", "Ea"]
     while True: 
         opc = menu() 
         if opc == 1:
             iteration, error = menu2()
             x = values1()
-    
+            rows=[]
             for i in range(iteration):
                 xold = x
                 J_inv = np.linalg.inv(J_func1(x))
                 product = np.dot(J_inv, func1(x))
                 x = np.subtract(x,product)
                 err = np.linalg.norm(x -xold)
-                print(''' Iteration\t\tx\t\t\ty\t\t\terror
-    {}\t \t{}\t {}\t {:.10f}
-                
-                
-                        '''.format(i, x[0][0],x[1][0], err) )
-
+                rows.append([i,x[0][0],x[1][0],err])
                 if err < error:
                     break
             else:
-                print("max error could not be reached")
+                print("Max error could not be reached\n")
+            print(tabulate(rows, headers= headers1)) 
+            print("\n\n")
 
         elif opc == 2:
             iteration, error = menu2()
             x = values1()
-
+            rows=[]
             for i in range(iteration):
                 xold = x
                 J_inv = np.linalg.inv(J_func2(x))
                 product = np.dot(J_inv, func2(x))
                 x = np.subtract(x,product)
                 err = np.linalg.norm(x -xold)
-                print(''' Iteration\t\tx\t\t\ty\t\t\terror
-    {}\t \t{}\t {}\t {:.10f}
-                
-                
-                        '''.format(i, x[0][0],x[1][0], err) )
+                rows.append([i,x[0][0],x[1][0],err])
 
                 if err < error:
                     break
             else:
-                print("max error could not be reached")
-            
+                print("Max error could not be reached\n")
+            print(tabulate(rows, headers= headers1))
+            print("\n\n")
+
         elif opc == 3:
             iteration, error = menu2()
-            x = values2()# initial point given by user
-    
+            x = values2()
+            rows=[]
             for i in range(iteration):
                 xold = x
                 J_inv = np.linalg.inv(J_func3(x))
                 product = np.dot(J_inv, func3(x))
                 x = np.subtract(x,product)
                 err = np.linalg.norm(x -xold)
-                print(''' Iteration\t\tx\t\t\ty\t\t\tz\t\terror
-    {}\t \t{}\t {}\t {}\t{:.10f}
-                
-                
-                        '''.format(i, x[0][0], x[1][0], x[2][0], err) )
+                rows.append([i,x[0][0],x[1][0], x[2][0],err])
 
                 if err < error:
                     break
             else:
-                print("max error could not be reached")        
-
+                print("max error could not be reached\n")        
+            print(tabulate(rows, headers= headers2))
+            print("\n\n")
         elif opc ==4:
             iteration, error = menu2()
-            x = values2()# initial point given by user
-    
+            x = values2()
+            rows=[]
             for i in range(iteration):
                 xold = x
                 J_inv = np.linalg.inv(J_func4(x))
                 product = np.dot(J_inv, func4(x))
                 x = np.subtract(x,product)
                 err = np.linalg.norm(x -xold)
-                print(''' Iteration\t\tx\t\t\ty\t\t\tz\t\terror
-    {}\t \t{}\t {}\t{}\t {:.10f}
-                
-                
-                        '''.format(i, x[0][0], x[1][0], x[2][0], err) )
+                rows.append([i,x[0][0],x[1][0], x[2][0],err])
 
                 if err < error:
                     break        
             else:
                 print("max error could not be reached")
+            print(tabulate(rows, headers= headers2))
+            print("\n\n")
 
         elif opc ==5:
             quit()
