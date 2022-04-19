@@ -6,7 +6,7 @@ from tabulate import *
 
 def func1(x):
     f1 = x[0][0]**2 + x[0][0]*x[1][0] -10
-    f2 = x[1][0] + 3*x[0][0]*x[1][0]**2 -50
+    f2 = x[1][0]**2 + 3*x[0][0]*x[1][0]**2 -50
     return np.array([[f1],[f2]])
 
 def J_func1(x):
@@ -43,7 +43,6 @@ def J_func4(x):
     return np.array([[2*x[0][0] -4, 2*x[1][0], 0],
                     [2*x[0][0] -1, -12, 0],
                     [6*x[0][0] -12, 2*x[1][0], -6*x[2][0]]])
-
 
 def menu():
     while(True):
