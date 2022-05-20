@@ -6,7 +6,7 @@ from tabulate import *
 
 def func1(x):
     f1 = x[0][0]**2 + x[0][0]*x[1][0] -10
-    f2 = x[1][0]**2 + 3*x[0][0]*x[1][0]**2 -50
+    f2 = x[1][0] + 3*x[0][0]*x[1][0]**2 -50
     return np.array([[f1],[f2]])
 
 def J_func1(x):
@@ -52,7 +52,7 @@ def menu():
         x, y, z =smp.symbols('x y z', real=True)
         smp.init_printing()    
 
-        f1 = 1.- x**2 + x*y- 10
+        f1 = x**2 + x*y- 10
         g1 = y + 3*x*y**2 -50 
         print('1.\n')
         smp.pprint(f1)
@@ -63,8 +63,8 @@ def menu():
         smp.pprint(f2)
         smp.pprint(g2,use_unicode=True)
         f3 = 2*x**2 -4*x + y**2 + 3*z**2 + 6*z +2
-        g3 = x + y**2 -2*y +2*z -5
-        t3 = 2*x**2 -12*x + y**2 -3*z + 8
+        g3 = x**2 + y**2 -2*y +2*z**2 -5
+        t3 = 3*x**2 -12*x + y**2 -3*z**2 + 8
         print('\n3.\n')
         smp.pprint(f3)
         smp.pprint(g3)

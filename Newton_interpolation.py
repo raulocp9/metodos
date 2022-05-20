@@ -132,7 +132,7 @@ def menu2(matrix):
                         break
     return a
 
-def select_backward_forward(poit, x):
+def select_backward_forward(point, x):
     for i in range(len(x)-1):
         if point > x[i][0]:
             start = i
