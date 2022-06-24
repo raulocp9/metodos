@@ -84,7 +84,7 @@ def read_keyboard():
                         print("Not a valid line. Try again")
                     else: 
                         break
-            line = line -1
+            line = line - 1
             while True:
                 print('Enter the new x value of the point {}'.format(line+1))
                 try:
@@ -198,7 +198,7 @@ def ols(x, y):
     suma = 0
     for i in range(len(model.resid)):
         suma += model.resid[i]**2
-
+    
     print('\nModel error: ',suma)
     print('\n Wait for plot...')
     fig = plt.figure('OLS')

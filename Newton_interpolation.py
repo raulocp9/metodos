@@ -103,7 +103,7 @@ def check_equidistant(x):
             is_equidistant = False
     if is_equidistant == False:
         print("Points are not equidistants. Newton Interpolation Method can not be used.")
-        quit()
+        exit()
     
 def menu2(matrix):
     lower_bound = matrix[0][0]
