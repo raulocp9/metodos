@@ -1,5 +1,5 @@
 
-from wsgiref.validate import validator
+
 import numpy as np
 import math 
 import sympy as smp
@@ -27,7 +27,7 @@ Romberg method''')
     f1 = x**4*((smp.sqrt(3+2*x**2))/3)
     f2 = x**5/ smp.Pow((x**2+4),(1/5))
     print('\n1.\n')
-    smp.pprint(smp.Integral(f1, (x, a, b)))
+    smp.pprint(smp.Integral(f1, (x, a, b)),use_unicode=False)
     print('\n2.\n')
     smp.pprint(smp.Integral(f2, (x, a, b)))
     print('\n3. Quit')
@@ -163,5 +163,5 @@ if __name__ == "__main__":
             break
         simpson(a, b, n, opc)
         romberg(a, b, opc)
-        print('Wait for plot')
+        print('\n\nWait for plot')
         ploting(a, b, opc)

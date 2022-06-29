@@ -161,7 +161,7 @@ def backward_forward(start, opc, x, point, forward_degree, backward_degree):
     if opc == 1:
         forward(start, x, point, forward_degree)
     else:
-        backward(x, point, backward_degree) 
+        backward(x, point, backward_degree, start) 
 
 def forward(start, x, point, forward_degree):
     if(forward_degree == 0):
@@ -184,11 +184,11 @@ def forward(start, x, point, forward_degree):
     for j in range(start,len(matrix)+start):
         matrix[i][0] = x[j][0]
         matrix[i][1] = x[j][1]
-        i+=1
-    print(matrix)
+        i+=1 
     for i in range(2 ,len(matrix)+1):
         for j in range(len(matrix)-i+1):
             matrix[j][i] = matrix[j+1][i-1]-matrix[j][i-1]
+    print('\nDifference table:')
     print(matrix) 
     h = np.absolute(matrix[0][0]-matrix[1][0])
     s = (point-matrix[0][0])/h
@@ -200,10 +200,14 @@ def forward(start, x, point, forward_degree):
         y = y+(s1*matrix[0][k]/fact)
         fact = fact*k
         s1 = s1*(s-(k-1))
-    print("Value of the interpolation {:.8f}\t {:.8f}".format(y, y-yold))     
-     
+        
+    print("Value of the interpolation: {:.8f}".format(y))     
+    if degree !=1:
+        print("error:{:.8f}".format(y-yold))     
 
-def backward(x, point, backward_degree):
+     
+def backward(x, point, backward_degree, start):
+
     if(backward_degree == 0):
         print("This can not be done")
         return
@@ -215,24 +219,24 @@ def backward(x, point, backward_degree):
             print("Not a number. Try again")
         else:
             if(degree > backward_degree or degree <= 0):
-                print("Out of range")
+              
+              print("Out of range")
             else:
                 break
 
     matrix = np.full((degree+1,degree+2),0)
+    i=0
+    for j in range(start+1-degree,start+2):
+        matrix[i][0] = x[j][0]
+        matrix[i][1] = x[j][1]
+        i+=1
 
-    for j in range(backward_degree+1):
-        matrix[j][0] = x[j][0]
-        matrix[j][1] = x[j][1]
-    print(matrix)
     for i in range(2 ,len(matrix)+1):
         for j in range(len(matrix)-i+1):
             matrix[j][i] = matrix[j+1][i-1]-matrix[j][i-1]
+    print('\nDifference table')
     print(matrix) 
-    print(degree)
-    print(len(matrix))
-    print(len(matrix[1]))
-    print(matrix.shape)
+
     h = np.absolute(matrix[0][0]-matrix[1][0])
     s = (point-matrix[len(matrix)-1][0])/h
     y = matrix[len(matrix)-1][1]
@@ -243,7 +247,9 @@ def backward(x, point, backward_degree):
         y = y+(s1*matrix[len(matrix)-k][k]/fact)
         fact = fact*k
         s1 = s1*(s-(k-1))
-    print("Value of the interpolation {:.8f}\t {:.8f}".format(y, y-yold))     
+    print("Value of the interpolation: {:.8f}\t ".format(y))
+    if degree !=1:
+        print("error:{:.8f}".format(y-yold))     
 
 if __name__=="__main__":
     while True:
